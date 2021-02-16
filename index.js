@@ -1,14 +1,14 @@
 
 var express = require('express')
 var app = express()
-var rootDir = "./www/"
+var rootDir = "/www/"
 var gateway = require('gateway')
 
 var options = {
   '.php': 'php-cgi'
 }
 
-var middleware = gateway(__dirname + '/www', options)
+var middleware = gateway(__dirname + rootDir, options)
 
 app.all('/',(req,res) => {
     
