@@ -10,7 +10,7 @@ var options = {
 
 var middleware = gateway(__dirname + '/www', options)
 
-app.get('/',(req,res) => {
+app.all('/',(req,res) => {
     
     middleware(req, res, function(err) {
         res.writeHead(204, err)
@@ -18,16 +18,11 @@ app.get('/',(req,res) => {
       })
 })
 
-app.post('/index.php',(req,res) => {
-    
+app.all('/index.php',(req,res) => {
     middleware(req, res, function(err) {
         res.writeHead(204, err)
         res.end()
       })
-})
-
-app.get('/index.php', (req, res) => {
-    res.redirect('/')
 })
 
 app.listen(8888)
